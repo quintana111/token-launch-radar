@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Signal / Token Launch Radar</title>
+  <link rel="stylesheet" href="app.css">
+  <script defer src="../data.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body data-view="board">
+  <header class="topbar">
+    <a class="wordmark" href="?view=board" aria-label="Signal radar home"><span class="mark">S</span><span>SIGNAL<span class="wordmark-soft"> / FIELDNOTES</span></span></a>
+    <div class="top-meta"><span class="live-dot"></span><span>SEALED SNAPSHOT</span><span class="meta-divider"></span><span id="snapshot-date">—</span></div>
+    <nav class="top-nav" aria-label="Main navigation">
+      <button class="nav-link active" data-tab="radar">Radar <span id="nav-count">—</span></button>
+      <button class="nav-link" data-tab="benchmarks">Live comps</button>
+      <button class="nav-link" data-tab="method">Method</button>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-rule"></span> TOKEN LAUNCH RADAR <span class="eyebrow-index">/ 01</span></p>
+        <h1 id="page-title">Find the signal<br><em>before the ticker.</em></h1>
+        <p class="hero-note">A comparable-calibrated map of protocols whose snapshot record carries no token. Rank is a scenario, not a launch call.</p>
+      </div>
+      <div class="hero-stamp"><span class="stamp-ring">S</span><span class="stamp-label">ON-CHAIN<br>RESEARCH<br><b>DESK 01</b></span></div>
+      <div class="hero-foot"><span>VALUE WINDOW <b>7D + OBSERVED TENURE</b></span><span>DATASET <b>DEFILLAMA / SEALED</b></span><span>MODE <b>READ-ONLY RADAR</b></span></div>
+    </section>
+
+    <section class="stats-grid" aria-label="Snapshot coverage">
+      <article class="stat-card stat-accent"><span class="stat-label">RADAR UNIVERSE</span><strong id="stat-rows">—</strong><span class="stat-sub">No token recorded</span></article>
+      <article class="stat-card"><span class="stat-label">HOUSE WATCHLIST</span><strong id="stat-watchlist">—</strong><span class="stat-sub">Every slug covered</span></article>
+      <article class="stat-card"><span class="stat-label">LIVE COMPARABLES</span><strong id="stat-comps">—</strong><span class="stat-sub">Positive market cap / TVL</span></article>
+      <article class="stat-card"><span class="stat-label">SNAPSHOT FLOOR</span><strong id="stat-floor">—</strong><span class="stat-sub">Universe begins at $5M TVL</span></article>
+    </section>
+
+    <section class="value-band" aria-label="Valuation model summary">
+      <div class="value-label"><span class="mini-mark">∿</span><div><b>VALUATION ENGINE</b><span id="model-id">RADAR-COMPS-1</span></div></div>
+      <div class="value-equation"><span>TVL</span><i>×</i><span>peer mcap / TVL</span><i>×</i><span>growth</span><i>×</i><span>tenure</span></div>
+      <div class="value-readout"><span>GLOBAL PEER MULTIPLE</span><b id="global-multiple">—</b></div>
+      <button class="text-button" data-tab="method">Show method <span>↗</span></button>
+    </section>
+
+    <section id="radar-view" class="workspace">
+      <div class="section-heading">
+        <div><p class="eyebrow">01 / OPPORTUNITY BOARD</p><h2>Pre-token prospects <span id="result-count-label">—</span></h2></div>
+        <div class="sort-wrap"><label for="sort">ORDER BY</label><select id="sort"><option value="value">Implied value</option><option value="growth">7D growth</option><option value="tvl">TVL</option><option value="age">Observed tenure</option></select></div>
+      </div>
+      <div class="filters" role="search">
+        <label class="search-field"><span class="search-icon">⌕</span><input id="search" type="search" placeholder="Find a protocol, chain, category…" autocomplete="off"><kbd>/</kbd></label>
+        <label class="filter-select"><span>CATEGORY</span><select id="category"><option value="">All categories</option></select></label>
+        <label class="filter-select"><span>CHAIN</span><select id="chain"><option value="">All chains</option></select></label>
+        <button class="clear-button" id="clear-filters" type="button">Reset <span>↺</span></button>
+      </div>
+      <div class="board-frame">
+        <div class="board-topline"><span>RANKED SIGNALS <span class="line-dot"></span> <span id="results-count" data-visible="0">0 shown</span></span><span class="board-note">CLICK A ROW FOR THE FARM PLAN <b>↗</b></span></div>
+        <div class="table-wrap">
+          <table class="protocol-table">
+            <thead><tr><th scope="col">#</th><th scope="col">PROTOCOL</th><th scope="col">CATEGORY / CHAIN</th><th scope="col">TVL</th><th scope="col">7D Δ</th><th scope="col">SCENARIO FDV</th><th scope="col">RECORD</th></tr></thead>
+            <tbody id="protocol-rows"></tbody>
+          </table>
+          <div id="empty-state" class="empty-state" hidden>No protocols match these filters. Change a filter or clear the search.</div>
+        </div>
+        <div class="board-foot"><span>MODEL RANK IS GLOBAL TO THIS PRE-TOKEN SET</span><span>NOT AN AIRDROP SIGNAL <b>·</b> NEVER A GUARANTEE</span></div>
+      </div>
+      <p class="disclaimer">“No token recorded” means the sealed dataset has no token identifier; it is not proof none exists. Always verify the official app, contracts and exit terms before interacting.</p>
+    </section>
+
+    <section id="benchmarks-view" class="workspace alternate-view" hidden>
+      <div class="section-heading"><div><p class="eyebrow">02 / MARKET REFERENCES</p><h2>Live token comparables <span id="benchmark-count">—</span></h2></div><p class="heading-note">Shown separately from the launch radar. These snapshot peers calibrate the category multiples.</p></div>
+      <div class="benchmark-intro"><span class="benchmark-tag">TRADING / MCap > $0</span><span>Sorted by observed market-cap-to-TVL multiple · values from the same sealed snapshot</span></div>
+      <div class="board-frame"><div class="table-wrap"><table class="protocol-table"><thead><tr><th>#</th><th>REFERENCE</th><th>CATEGORY</th><th>TVL</th><th>MARKET CAP</th><th>MCap / TVL</th><th>STATUS</th></tr></thead><tbody id="benchmark-rows"></tbody></table></div><div class="board-foot"><span>LIVE TOKEN REFERENCES ARE NOT PRE-TOKEN CANDIDATES</span><span>NO EXTERNAL DATA LOOKUPS</span></div></div>
+    </section>
+
+    <section id="method-view" class="workspace alternate-view" hidden>
+      <div class="section-heading"><div><p class="eyebrow">03 / MODEL NOTES</p><h2>How value is estimated</h2></div><span class="method-version" id="method-version">RADAR-COMPS-1</span></div>
+      <div class="method-grid">
+        <article class="method-card method-wide"><span class="method-kicker">SCENARIO FDV / NOT EXPECTED VALUE</span><h3 id="method-formula">—</h3><p id="method-copy">—</p></article>
+        <article class="method-card"><span class="method-kicker">01 · COMPS</span><h3>Comparable multiple</h3><p>For each category, take the median log market-cap / TVL ratio among snapshot protocols with a positive recorded market cap. Shrink the category estimate toward the snapshot-wide median with four prior peers. Sparse categories lean more on the global baseline.</p></article>
+        <article class="method-card"><span class="method-kicker">02 · MOMENTUM</span><h3>Seven-day signal</h3><p>Use the snapshot’s 7D TVL change through a bounded, smooth factor. The input is clipped to −50% / +100% before adjustment so a short noisy window cannot dominate the estimate. Missing change is neutral.</p></article>
+        <article class="method-card"><span class="method-kicker">03 · OBSERVATION</span><h3>Tracking tenure</h3><p>Older observed histories receive a modest maturity adjustment that saturates. This is only time tracked by DefiLlama, not the protocol’s true start date; missing dates use a neutral fallback.</p></article>
+        <article class="method-card method-warning"><span class="method-kicker">LIMITS / READ BEFORE YOU FARM</span><h3>No token, reward or timing claim.</h3><p>The snapshot says what one source records as of its fetch time. It does not establish token issuance, airdrop eligibility, safety, sustainability or current contract state. Values are comparison scenarios—not financial advice or an expected payout.</p></article>
+      </div>
+      <div class="method-strip"><span>DATA SOURCE</span><b id="data-source">—</b><span>AS OF</span><b id="method-date">—</b><span>LIVE COMPS</span><b id="method-comps">—</b></div>
+    </section>
+  </main>
+
+  <aside id="detail-panel" class="detail-panel" aria-labelledby="detail-name" aria-modal="true" role="dialog" hidden>
+    <button id="close-detail" class="close-button" type="button" aria-label="Close protocol details">×</button>
+    <div class="detail-head"><p class="eyebrow">PROTOCOL BRIEF <span id="detail-rank">—</span></p><span id="detail-status" class="status-pill">NO TOKEN RECORDED</span><h2 id="detail-name">—</h2><p id="detail-category" class="detail-category">—</p></div>
+    <div class="detail-value"><span>SCENARIO FDV</span><strong id="detail-value">—</strong><small>Comparable-based · not a price target</small></div>
+    <div class="detail-metrics"><div><span>TVL</span><b id="detail-tvl">—</b></div><div><span>7D CHANGE</span><b id="detail-growth">—</b></div><div><span>OBSERVED</span><b id="detail-age">—</b></div></div>
+    <div class="drivers"><p class="eyebrow">MODEL DRIVERS</p><div class="driver-row"><span>Peer multiple</span><b id="detail-multiple">—</b></div><div class="driver-row"><span>Growth factor</span><b id="detail-growth-factor">—</b></div><div class="driver-row"><span>Tenure factor</span><b id="detail-age-factor">—</b></div><div class="driver-row"><span>Category peers</span><b id="detail-peers">—</b></div></div>
+    <div class="farm-plan"><p class="eyebrow">LOW-REGRET FARM PLAN <span>· NO REWARD ASSUMED</span></p><ol id="farm-steps"></ol></div>
+    <p class="detail-warning">Start read-only. Only interact after independently verifying the official app, contract and exit path. Capital and transaction fees are at risk.</p>
+  </aside>
+  <div id="scrim" class="scrim" hidden></div>
+  <footer class="site-footer"><span>SIGNAL / FIELDNOTES <b>·</b> SNAPSHOT RESEARCH</span><span>LOCAL-FIRST · NO NETWORK REQUESTS · NO PROMISED AIRDROPS</span><span id="footer-asof">—</span></footer>
+</body>
+</html>
