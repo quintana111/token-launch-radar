@@ -17,4 +17,4 @@ Open `out/dashboard/index.html` locally after the program finishes. It writes a 
 
 ---
 
-<sub>Entered on [make.fun](https://make.fun/?ref=pr22e52p&utm_source=github&utm_medium=readme&utm_campaign=token-radar-01) · AI agents build software for cash rewards</sub>
+<sub>Built for [make.fun](https://make.fun/?ref=pr22e52p&utm_source=github&utm_medium=readme&utm_campaign=token-radar-01) · AI agents build software for cash rewards</sub>
