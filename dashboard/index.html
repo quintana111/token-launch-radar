@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Token Launch Radar</title>
+<link rel="stylesheet" href="app.css"></head>
+<body>
+<header class="hero">
+<div class="hero-l">
+<h1>Token Launch Radar</h1>
+<p class="badges"><span class="badge">Sealed snapshot · 14 Nov 2026</span> <span class="badge" id="modelBadge">model v3.1</span></p>
+<p id="equation" class="eq">Loading model…</p>
+<p class="factors">Size × family × growth × seasoning × siblings × breadth</p>
+<div id="valid" class="valid"></div>
+<p class="notice">Implied values are size-curve estimates, not launch probabilities, promised airdrops, or sale prices.</p>
+</div>
+<div class="hero-r"><svg id="scatter" viewBox="0 0 460 300" role="img" aria-label="Log-log scatter of TVL against market cap"></svg>
+<p class="legend"><span class="lg-line"></span> base OLS curve &nbsp; <span class="lg-dot"></span> traded comps &nbsp; <span class="lg-hollow"></span> board estimates</p></div>
+</header>
+<section class="strip" id="receipts"></section>
+<section class="strip stats" id="stats"></section>
+<main>
+<div class="tabs"><button id="tabBoard" class="on">Board</button><button id="tabLive">Live tokens · top 24</button></div>
+<section id="boardPane">
+<div class="filters">
+<input id="q" type="search" placeholder="Search protocol…" aria-label="Search protocols">
+<select id="fTier" aria-label="Tier"><option value="">All tiers</option><option>WATCHLIST</option><option>EARLY</option></select>
+<select id="fCat" aria-label="Category"><option value="">All categories</option></select>
+<select id="fChain" aria-label="Chain"><option value="">All chains</option></select>
+<select id="fSize" aria-label="Size"><option value="">Any TVL</option><option value="above">Above $50M</option><option value="below">Below $50M</option></select>
+<select id="fVerdict" aria-label="Verdict"><option value="">All verdicts</option><option>FARM</option><option>THIN</option><option>SKIP</option><option>VERIFY</option></select>
+<label><input type="checkbox" id="fMissing"> Missing data</label>
+<label><input type="checkbox" id="fSibling"> Name sibling</label>
+<label><input type="checkbox" id="fRoute"> Route unverified</label>
+<button id="reset">Reset</button>
+<span id="count"></span>
+</div>
+<div class="tbl-wrap"><table id="board">
+<thead><tr>
+<th data-k="name">Protocol</th><th data-k="tvl_usd">TVL</th><th data-k="change_7d">7D</th>
+<th data-k="age_days">No token for†</th><th data-k="implied_value_usd">Implied value</th>
+<th data-k="slice_usd">$1.0K slice</th><th data-k="net_usd">Net of all costs*</th><th data-k="verdict">Farm / Fees / Hold</th>
+</tr></thead><tbody></tbody></table></div>
+<p class="fn">† Observed pre-token record age since DefiLlama listing; not verified protocol age.</p>
+<p class="fn">* All modeled costs; unverified execution costs excluded. Net of all costs = $1K modeled allocation − modeled fees − T-bill forgone ($6.14 at 56 days). Bridge fees, on-ramping, swaps, protocol fees, funding, and slippage are not known from this snapshot.</p>
+</section>
+<section id="livePane" hidden><p class="fn">Top 24 live tokens by market cap. Display only — never assigned board ranks or farming verdicts.</p>
+<div class="tbl-wrap"><table id="live"><thead><tr><th>Protocol</th><th>Category</th><th>TVL</th><th>Market cap</th><th>Mcap / TVL</th></tr></thead><tbody></tbody></table></div></section>
+</main>
+<aside id="drawer" hidden><button id="close" aria-label="Close detail">×</button><div id="detail"></div></aside>
+<details class="method"><summary>Methodology, gas costs, exclusions &amp; reconciliation</summary><div id="methodBody"></div></details>
+<footer><p id="judge"></p><p class="fn">Source: sealed 14 Nov 2026 snapshot (DefiLlama protocols). No live data. No network requests leave this page; board data loads from the local board.json next to this dashboard.</p></footer>
+<script src="app.js"></script>
+</body></html>

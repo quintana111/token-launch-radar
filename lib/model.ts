@@ -65,18 +65,23 @@ export function chainCount(chains: string[] | null | undefined): number {
   return new Set(chains.filter((c) => typeof c === "string" && c.trim()).map((c) => c.trim().toLowerCase())).size;
 }
 
-/** Normalise a protocol name for sibling matching (NFKD, strip marks, lower, punctuation to spaces). */
+/** Normalise a protocol name: NFKD, strip marks, lower, punctuation to spaces. */
 export function normaliseName(raw: string | null | undefined): string {
   if (!raw) return "";
   return raw.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase()
-    .replace(/[^a-z0-9]+/g, " ").replace(/\s+/g, " ").trim()
+    .replace(/[^a-z0-9]+/g, " ").replace(/\s+/g, " ").trim();
+}
+
+/** Sibling-only cleanup: drop a trailing version marker or the word "protocol". */
+function siblingForm(raw: string | null | undefined): string {
+  return normaliseName(raw)
     .replace(/\s+v\d+(\.\d+)*$/, "").replace(/\s+version\s+\d+$/, "").replace(/\s+protocol$/, "");
 }
 
 const FIRST_WORD_STOP = new Set(["the", "defi", "yield", "liquid", "staked", "staking", "wrapped", "finance", "protocol", "vault", "vaults", "pool", "pools"]);
 
 export function namesAreSiblings(a: string, b: string): boolean {
-  const na = normaliseName(a), nb = normaliseName(b);
+  const na = siblingForm(a), nb = siblingForm(b);
   if (!na || !nb) return false;
   if (na === nb) return true;
   const fa = na.split(" ")[0], fb = nb.split(" ")[0];
@@ -580,7 +585,7 @@ export function buildRows(boardRecs: SnapRecord[], watchlist: Set<string>, fit: 
       rank: 0, slug: rec.slug, name: rec.name, category: rec.category ?? "", tier: watchlist.has(rec.slug) ? "WATCHLIST" : "EARLY",
       chains: (rec.chains || []).filter((c) => typeof c === "string"),
       tvl_usd: rec.tvl_usd as number, change_7d: finiteNum(rec.change_7d) ? rec.change_7d : null,
-      age_days: days !== null && days >= 0 ? days : days, listed_at: rec.listed_at,
+      age_days: days !== null ? Math.max(0, days) : null, listed_at: rec.listed_at,
       implied_value_usd: Math.max(1, Math.round(est.value)),
       p10_usd: Math.max(1, Math.round(est.value / band)), p90_usd: Math.max(1, Math.round(est.value * band)),
       size_usd: est.size, family_mult: est.family, growth_mult: est.growth, seasoning_mult: est.seasoning,

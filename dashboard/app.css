@@ -1,0 +1,41 @@
+:root{--ivory:#F4F1E9;--ink:#182721;--forest:#24634C;--copper:#B86739;--line:#d8d2c2;--muted:#5c665e}
+*{box-sizing:border-box}body{margin:0;background:var(--ivory);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+h1{font-size:30px;margin:0 0 6px}.hero{display:flex;gap:24px;padding:22px 26px;border-bottom:2px solid var(--forest);flex-wrap:wrap}
+.hero-l{flex:1 1 420px}.hero-r{flex:1 1 380px}.badge{display:inline-block;background:var(--forest);color:#fff;border-radius:999px;padding:2px 10px;font-size:12px;margin-right:6px}
+.eq{font-family:ui-monospace,monospace;font-size:14px}.factors{color:var(--forest);font-weight:600}
+.valid{font-size:13px}.valid b{color:var(--forest)}.notice{color:var(--copper);font-size:13px}
+.legend{font-size:12px;color:var(--muted)}.lg-line{display:inline-block;width:18px;border-top:3px solid var(--forest);vertical-align:middle}
+.lg-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#8a938c;vertical-align:middle}
+.lg-hollow{display:inline-block;width:8px;height:8px;border-radius:50%;border:2px solid var(--copper);vertical-align:middle}
+.strip{display:flex;gap:18px;flex-wrap:wrap;padding:10px 26px;border-bottom:1px solid var(--line);font-size:13px}
+.strip b{color:var(--forest)}.strip .ok{color:var(--forest);font-weight:700}
+main{padding:12px 26px}.tabs button{background:none;border:1px solid var(--line);border-radius:6px 6px 0 0;padding:7px 16px;cursor:pointer;font:inherit}
+.tabs button.on{background:var(--forest);color:#fff;border-color:var(--forest)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:12px 0}
+.filters input,.filters select{font:inherit;padding:5px 8px;border:1px solid var(--line);border-radius:5px;background:#fff}
+.filters button{font:inherit;padding:5px 12px;border:1px solid var(--forest);background:#fff;color:var(--forest);border-radius:5px;cursor:pointer}
+#count{margin-left:auto;font-size:13px;color:var(--muted)}
+.tbl-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;background:#fff;font-variant-numeric:tabular-nums}
+th,td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left;white-space:normal}
+th{cursor:pointer;background:#ece8db;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+th:hover{color:var(--forest)}tr:hover td{background:#f7f4ec}
+.name{font-weight:700}.sub{font-size:12px;color:var(--muted);display:block}
+.tier{font-size:11px;background:var(--forest);color:#fff;border-radius:4px;padding:1px 6px;margin-left:5px}
+.tier.early{background:#7a6a4f}.flag{color:var(--copper);font-size:12px}
+.bar{position:relative;height:8px;background:#e3ded0;border-radius:4px;min-width:90px;margin-top:3px}
+.bar i{position:absolute;top:0;bottom:0;background:var(--copper);border-radius:4px;opacity:.75}
+.bar b{position:absolute;top:-2px;width:2px;height:12px;background:var(--forest)}
+.v-FARM{color:var(--forest);font-weight:700}.v-THIN{color:#8a6d1f;font-weight:700}.v-SKIP{color:#8a2f23;font-weight:700}.v-VERIFY{color:var(--copper);font-weight:700}
+.fn{font-size:12px;color:var(--muted)}
+#drawer{position:fixed;top:0;right:0;bottom:0;width:min(560px,94vw);background:#fff;border-left:2px solid var(--forest);overflow:auto;padding:20px 22px;z-index:10;box-shadow:-8px 0 24px rgba(0,0,0,.15)}
+#close{float:right;font-size:26px;border:0;background:none;cursor:pointer}
+#detail h2{margin:4px 0 2px}#detail h3{margin:18px 0 6px;color:var(--forest)}
+.wf{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}.wf td{border-bottom:1px solid var(--line);padding:5px 4px;text-align:right}.wf td:first-child{text-align:left}
+#detail ol{padding-left:20px}#detail li{margin-bottom:8px}
+.method{margin:0 26px 20px;border:1px solid var(--line);border-radius:8px;padding:10px 14px;background:#fff}
+.method summary{cursor:pointer;font-weight:700;color:var(--forest)}
+.method table{font-size:13px;margin:8px 0}.method th{cursor:default}
+footer{padding:14px 26px 26px;border-top:2px solid var(--forest)}
+footer p:first-child{color:var(--copper);font-style:italic}
+@media(max-width:760px){.hero{padding:16px}main{padding:8px 12px}.strip{padding:8px 12px}}
